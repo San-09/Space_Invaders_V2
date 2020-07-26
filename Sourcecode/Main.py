@@ -63,14 +63,32 @@ class Player(Ship):   # As ship is defined inside player, the player will inheri
         self.max_health = health
         
         
+class Enemy(Ship):
+    COLOR_MAP = {
+                "red": (RED_SPACE_SHIP, RED_LASER),
+                 "green": (GREEN_SPACE_SHIP, GREEN_LASER),
+                "blue": (BLUE_SPACE_SHIP, BLUE_LASER)
+    }
+
+    def __init__(self, x, y, color, health=100):   # New initialisation
+        super().__init__(x,y,health)   # Grabs methods from Ship. Anaything with self.
+        self.ship_img, self.laser_img = self.COLOR_MAP[color]
+        self.mask = pygame.mask.from_surface(self.ship_img)
+
+    def move(self,vel):
+        self.y += vel
 
 
 def main():
     run = True
     FPS = 60
-    level = 1
+    level = 0
     lives = 5
     main_font = pygame.font.SysFont("comicsans", 50)
+
+    enemies = []
+    wave_length = 5
+    enemy_vel = 1
 
     player_vel = 5
 
@@ -88,13 +106,24 @@ def main():
         #The following automates this by getting the width of the label text
         WIN.blit(level_label, (WIDTH - level_label.get_width() - 10, 10))
 
+        for enemy in enemies:
+            enemy.draw(WIN)
+
         player.draw(WIN)
+
 
         pygame.display.update()
 
     while run:
         clock.tick(FPS)
-        redraw_window()
+
+        if len(enemies) == 0:
+            level += 1
+            wave_length += 5
+            #Spawn the enemeies off screen at different positions and they all move down at the same speed
+            for i in range(wave_length):
+                enemy = Enemy(random.randrange(50, WIDTH-100), random.randrange(-1500, -100), random.choice(["red", "blue", "green"]))
+                enemies.append(enemy)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:       #If user quits, then stop the game. Set Run as False
@@ -113,6 +142,11 @@ def main():
         if keys[pygame.K_s] and player.y + player_vel + player.get_height() < HEIGHT:  # Down # Only if player is within Height window limit
             player.y += player_vel
 
+        for enemy in enemies:
+            enemy.move(enemy_vel)
+            
 
+
+        redraw_window()
 
 main()

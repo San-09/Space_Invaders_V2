@@ -26,7 +26,36 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="last_opened_file_path" value="E:/Projects/Programming/Python/Tech with Tim/Space Invaders V2/Space-Shooter-Tutorial/Space Shooter Tutorial" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Space_Invaders_V2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Sourcecode" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Sourcecode/Main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -42,9 +71,29 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2381" y="165" key="SettingsEditor" timestamp="1595771638814">
+    <state x="2660" y="275" key="FileChooserDialogImpl" timestamp="1595772554437">
       <screen x="1983" y="0" width="1857" height="1080" />
     </state>
-    <state x="2381" y="165" key="SettingsEditor/1983.0.1857.1080/63.0.1857.1080@1983.0.1857.1080" timestamp="1595771638814" />
+    <state x="2660" y="275" key="FileChooserDialogImpl/1983.0.1857.1080/63.0.1857.1080@1983.0.1857.1080" timestamp="1595772554437" />
+    <state width="1899" height="235" key="GridCell.Tab.0.bottom" timestamp="1595772640277">
+      <screen x="1983" y="0" width="1857" height="1080" />
+    </state>
+    <state width="1899" height="235" key="GridCell.Tab.0.bottom/1983.0.1857.1080/63.0.1857.1080@1983.0.1857.1080" timestamp="1595772640277" />
+    <state width="1899" height="235" key="GridCell.Tab.0.center" timestamp="1595772640277">
+      <screen x="1983" y="0" width="1857" height="1080" />
+    </state>
+    <state width="1899" height="235" key="GridCell.Tab.0.center/1983.0.1857.1080/63.0.1857.1080@1983.0.1857.1080" timestamp="1595772640277" />
+    <state width="1899" height="235" key="GridCell.Tab.0.left" timestamp="1595772640277">
+      <screen x="1983" y="0" width="1857" height="1080" />
+    </state>
+    <state width="1899" height="235" key="GridCell.Tab.0.left/1983.0.1857.1080/63.0.1857.1080@1983.0.1857.1080" timestamp="1595772640277" />
+    <state width="1899" height="235" key="GridCell.Tab.0.right" timestamp="1595772640277">
+      <screen x="1983" y="0" width="1857" height="1080" />
+    </state>
+    <state width="1899" height="235" key="GridCell.Tab.0.right/1983.0.1857.1080/63.0.1857.1080@1983.0.1857.1080" timestamp="1595772640277" />
+    <state x="2381" y="165" key="SettingsEditor" timestamp="1595772829048">
+      <screen x="1983" y="0" width="1857" height="1080" />
+    </state>
+    <state x="2381" y="165" key="SettingsEditor/1983.0.1857.1080/63.0.1857.1080@1983.0.1857.1080" timestamp="1595772829048" />
   </component>
 </project>

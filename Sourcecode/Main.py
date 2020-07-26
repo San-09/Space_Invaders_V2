@@ -56,6 +56,8 @@ def main():
     lives = 5
     main_font = pygame.font.SysFont("comicsans", 50)
 
+    player_vel = 5
+
     ship = Ship(300, 650)
     clock = pygame.time.Clock()
 
@@ -81,5 +83,21 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:       #If user quits, then stop the game. Set Run as False
                 run = False
+
+        #With the following method you will be able to press two keys at the same time. If Event used, then you can
+        #only press one key at a time
+
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_a]: #Left
+            ship.x -= player_vel
+
+        if keys[pygame.K_d]: #Right
+            ship.x += player_vel
+        if keys[pygame.K_w]:  # Up
+            ship.y -= player_vel
+        if keys[pygame.K_s]:  # Down
+            ship.y += player_vel
+
+
 
 main()

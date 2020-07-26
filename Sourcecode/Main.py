@@ -48,6 +48,12 @@ class Ship:
         window.blit(self.ship_img, (self.x, self.y))
       #  pygame.draw.rect(window, (255,0,0), (self.x, self.y, 50, 50)) # This was a test to create a rectangle
 
+    def get_width(self):
+        return self.ship_img.get_width()
+
+    def get_height(self):
+        return self.ship_img.get_height()
+
 class Player(Ship):   # As ship is defined inside player, the player will inherit the ship
     def __init__(self, x, y, health = 100):
         super().__init__(x, y, health)      #initialises from the Ship class #Grabs the methods
@@ -100,11 +106,11 @@ def main():
         keys = pygame.key.get_pressed()
         if keys[pygame.K_a] and player.x - player_vel > 0: #Left
             player.x -= player_vel
-        if keys[pygame.K_d] and player.x + player_vel + 50 < WIDTH: #Right
+        if keys[pygame.K_d] and player.x + player_vel + player.get_width() < WIDTH: #Right
             player.x += player_vel
         if keys[pygame.K_w] and player.y - player_vel > 0:  # Up
             player.y -= player_vel
-        if keys[pygame.K_s] and player.y + player_vel + 50 < HEIGHT:  # Down # Only if player is within Height window limit
+        if keys[pygame.K_s] and player.y + player_vel + player.get_height() < HEIGHT:  # Down # Only if player is within Height window limit
             player.y += player_vel
 
 

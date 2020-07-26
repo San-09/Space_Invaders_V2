@@ -24,15 +24,22 @@ BLUE_LASER = pygame.image.load(os.path.join("assets", "pixel_laser_blue.png"))
 YELLOW_LASER = pygame.image.load(os.path.join("assets", "pixel_laser_yellow.png"))
 
 #Background image
-BG = pygame.image.load(os.path.join("assets", "background-black.png"))
+#Transform.scale will scale the background image to the size of the Width and Height. load will load the image
+BG = pygame.transform.scale(pygame.image.load(os.path.join("assets", "background-black.png")), (WIDTH,HEIGHT))
 
 def main():
     run = True
     FPS = 60
     clock = pygame.time.Clock()
 
+    def redraw_window():
+        WIN.blit(BG, (0,0 ))        #Draws the background screen at (0,0) at the top corner
+
+        pygame.display.update()
+
     while run:
         clock.tick(FPS)
+        redraw_window()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:       #If user quits, then stop the game. Set Run as False

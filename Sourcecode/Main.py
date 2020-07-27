@@ -180,7 +180,7 @@ def main():
     player_vel = 5
     laser_vel = 10
 
-    player = Player(300, 650)
+    player = Player(300, 630)
     clock = pygame.time.Clock()
 
     lost = False
@@ -245,7 +245,7 @@ def main():
             player.x += player_vel
         if keys[pygame.K_w] and player.y - player_vel > 0:  # Up
             player.y -= player_vel
-        if keys[pygame.K_s] and player.y + player_vel + player.get_height() < HEIGHT:  # Down # Only if player is within Height window limit
+        if keys[pygame.K_s] and player.y + player_vel + player.get_height() + 10 < HEIGHT:  # Down # Only if player is within Height window limit
             player.y += player_vel
         if keys[pygame.K_SPACE]:
             player.shoot()
@@ -265,9 +265,24 @@ def main():
                 lives -= 1
                 enemies.remove(enemy)
 
-
         player.move_lasers(-laser_vel, enemies)
 
+def main_menu():
+    title_font = pygame.font.SysFont("comisans", 70)
+    run = True
+    while run:
 
+        WIN.blit(BG, (0,0))
+        title_label = title_font.render("Press the mouse to begin ...", 1, (255,255,255))
+        WIN.blit(title_label, (WIDTH/2 - title_label.get_width()/2, 350))
+        pygame.display.update()
 
-main()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                main()
+
+    pygame.quit()
+
+main_menu()

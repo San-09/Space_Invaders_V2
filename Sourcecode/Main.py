@@ -85,6 +85,7 @@ def main():
     level = 0
     lives = 5
     main_font = pygame.font.SysFont("comicsans", 50)
+    lost_font = pygame.font.SysFont("comicsans", 60)
 
     enemies = []
     wave_length = 5
@@ -94,6 +95,9 @@ def main():
 
     player = Player(300, 650)
     clock = pygame.time.Clock()
+
+    lost = False
+    lost_count = 0
 
     def redraw_window():
         WIN.blit(BG, (0,0))        #Draws the background screen at (0,0) at the top corner
@@ -111,11 +115,26 @@ def main():
 
         player.draw(WIN)
 
+        if lost:
+            lost_label = lost_font.render("You Lost ", 1, (255,255,255))
+            WIN.blit(lost_label, (WIDTH/2 - lost_label.get_width()/2, 350))  #Centres text in the middle of the screen
 
         pygame.display.update()
 
     while run:
-        clock.tick(FPS)
+        clock.tick(FPS)         # This while loop will run at x frames per second.
+        redraw_window()
+
+        if lives <= 0 or player.health <= 0:
+            lost = True
+            lost_count += 1
+
+
+        if lost:
+            if lost_count > FPS * 3:     # 3 second timer so show lost font for this long
+                run = False
+            else:
+                continue            #This continue will not run the rest of the while loop. It'll start again at the while loop
 
         if len(enemies) == 0:
             level += 1
@@ -142,11 +161,13 @@ def main():
         if keys[pygame.K_s] and player.y + player_vel + player.get_height() < HEIGHT:  # Down # Only if player is within Height window limit
             player.y += player_vel
 
-        for enemy in enemies:
+        for enemy in enemies[:]:     # What does [:] do?
             enemy.move(enemy_vel)
-            
+            if enemy.y + enemy.get_height() > HEIGHT:
+                lives -= 1
+                enemies.remove(enemy)
 
 
-        redraw_window()
+
 
 main()

@@ -240,6 +240,11 @@ def main():
         for enemy in enemies[:]:     # What does [:] do?
             enemy.move(enemy_vel)
             enemy.move_lasers(laser_vel, player)
+
+            if random.randrange (0,120) == 1:         #To get the enemy to have a 50% change of shooting every second, then do FPS (60) * 2
+                enemy.shoot()
+
+
             if enemy.y + enemy.get_height() > HEIGHT:
                 lives -= 1
                 enemies.remove(enemy)

@@ -87,6 +87,7 @@ class Ship:
                 self.lasers.remove(laser)
 
 
+
     def shoot(self):
         if self.cool_down_counter == 0:     #If cool down counter is 0
             laser = Laser (self.x, self.y, self.laser_img)   # Create a new laser
@@ -129,6 +130,13 @@ class Player(Ship):   # As ship is defined inside player, the player will inheri
                         objs.remove(obj)
                         self.lasers.remove(laser)
 
+    def draw(self, window):
+        super().draw(window)
+        self.healthbar(window)
+
+    def healthbar(self, window):
+        pygame.draw.rect(window, (255,0,0), (self.x, self.y + self.ship_img.get_height() + 10, self.ship_img.get_width(), 10))
+        pygame.draw.rect(window, (0,255,0), (self.x, self.y + self.ship_img.get_height() + 10, self.ship_img.get_width() * (self.health/self.max_health), 10))
 
 class Enemy(Ship):
     COLOR_MAP = {
@@ -145,6 +153,12 @@ class Enemy(Ship):
     def move(self,vel):
         self.y += vel
 
+
+    def shoot(self):
+        if self.cool_down_counter == 0:     #If cool down counter is 0
+            laser = Laser (self.x-15, self.y, self.laser_img)   # Create a new laser
+            self.lasers.append(laser)           # Add to the list of lasers list
+            self.cool_down_counter = 1      #Set the cool down counter to increment
 
 def collide(obj1, obj2):
      offset_x = obj2.x - obj1.x
@@ -244,10 +258,13 @@ def main():
             if random.randrange (0,120) == 1:         #To get the enemy to have a 50% change of shooting every second, then do FPS (60) * 2
                 enemy.shoot()
 
-
-            if enemy.y + enemy.get_height() > HEIGHT:
+            if collide(enemy, player):
+                player.health -= 10
+                enemies.remove(enemy)
+            elif enemy.y + enemy.get_height() > HEIGHT:
                 lives -= 1
                 enemies.remove(enemy)
+
 
         player.move_lasers(-laser_vel, enemies)
 

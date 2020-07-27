@@ -128,7 +128,8 @@ class Player(Ship):   # As ship is defined inside player, the player will inheri
                 for obj in objs:
                     if laser.collision(obj):  # otherwise
                         objs.remove(obj)
-                        self.lasers.remove(laser)
+                        if laser in self.laser:
+                            self.lasers.remove(laser)
 
     def draw(self, window):
         super().draw(window)
@@ -233,7 +234,7 @@ def main():
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:       #If user quits, then stop the game. Set Run as False
-                run = False
+                quit()                  # Will quit the entire python code
 
         #With the following method you will be able to press two keys at the same time. If Event used, then you can
         #only press one key at a time
@@ -267,7 +268,7 @@ def main():
 
         player.move_lasers(-laser_vel, enemies)
 
-def main_menu():
+def main_menu():            #dont need FPS for main menu
     title_font = pygame.font.SysFont("comisans", 70)
     run = True
     while run:
